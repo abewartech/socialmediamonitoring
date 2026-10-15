@@ -28,6 +28,11 @@ jobs:
         # --ignore-platform-reqs: the lockfile pins ocramius/package-versions
         # 1.5.1, whose composer-plugin-api requirement only describes the
         # Composer 1 era; the locked code itself runs on PHP 7.4.
+        # COMPOSER_NO_PLUGINS: the pre-2.2 lockfile has no allow-plugins list;
+        # the only plugin is ocramius/package-versions (version-list codegen,
+        # not needed to install or test).
+        env:
+          COMPOSER_NO_PLUGINS: 1
         run: composer install --prefer-dist --no-interaction --no-progress --no-scripts --ignore-platform-reqs
 
       - name: Adapt installed.json for Laravel 6 package discovery
