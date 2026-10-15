@@ -16,6 +16,8 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertStatus(200);
+        // The homepage redirects to the admin dashboard by design
+        // (see routes/web.php).
+        $response->assertRedirect('/admin');
     }
 }
